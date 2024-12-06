@@ -4,8 +4,10 @@ import 'package:no_smoking/binding/progress_binding.dart';
 import 'package:no_smoking/binding/result_binding.dart';
 import 'package:no_smoking/page/progress_page.dart';
 
+import '../binding/google_join_binding.dart';
 import '../binding/login_binding.dart';
 import '../binding/main_binding.dart';
+import '../page/google_join_page.dart';
 import '../page/join_page.dart';
 import '../page/login_page.dart';
 import '../page/main_page.dart';
@@ -38,6 +40,11 @@ class Pages {
       name: Routers.result,
       page: () => const ResultPage(),
       binding: ResultBinding(),
+    ),
+    GetPage(
+      name: Routers.googleJoin,
+      page: () => const GoogleJoinPage(),
+      binding: GoogleJoinBinding(),
     ),
   ];
 }

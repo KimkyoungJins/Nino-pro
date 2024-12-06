@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:no_smoking/controller/home_controller.dart';
 import 'package:no_smoking/controller/result_controller.dart';
 import 'package:no_smoking/route/routers.dart';
+
+import '../controller/user_controller.dart';
 
 void toResultPage() => Get.toNamed(Routers.result, id: 1);
 
@@ -45,17 +48,19 @@ class ResultPage extends GetView<ResultController> {
                             ),
                           ),
                           const Gap(18),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 14),
-                            child: Text(
-                              '1 Year smoke free challenge\nhas been success!!',
-                              style: TextStyle(
-                                color: Color(0xFF353535),
-                                fontSize: 16,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 14),
+                            child: Obx(() {
+                              return Text(
+                                '${HomeController.to.challenge['title']}\nhas been success!!',
+                                style: const TextStyle(
+                                  color: Color(0xFF353535),
+                                  fontSize: 16,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              );
+                            }),
                           ),
                           const Gap(14),
                           Image.asset(
@@ -116,11 +121,33 @@ class ResultPage extends GetView<ResultController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      'assets/img_red_lung.png',
-                      width: 127,
-                      height: 125,
-                    ),
+                    Obx(() {
+                      String imgUrl = '';
+
+                      switch (UserController.to.user['smoking_age']) {
+                        case 1:
+                          imgUrl = 'assets/img_red_lung.png';
+                          break;
+                        case 2:
+                          imgUrl = 'assets/img_sore_lung.png';
+                          break;
+                        case 3:
+                          imgUrl = 'assets/img_little_red_lung.png';
+                          break;
+                        case 4:
+                          imgUrl = 'assets/img_black_lung.png';
+                          break;
+                        case 5:
+                          imgUrl = 'assets/img_deep_dark_lung.png';
+                          break;
+                      }
+
+                      return Image.asset(
+                        imgUrl,
+                        width: 127,
+                        height: 125,
+                      );
+                    }),
                     Image.asset(
                       'assets/ic_play.png',
                       width: 48,
@@ -168,16 +195,29 @@ class ResultPage extends GetView<ResultController> {
                         ),
                       ),
                       const Gap(40),
-                      const Text(
-                        '5,680,030',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
+                      Obx(() {
+                        if (HomeController.to.challenge.isEmpty) {
+                          return const SizedBox();
+                        }
+
+                        DateTime currentDate = DateTime.now();
+                        DateTime startDate = DateTime.parse(HomeController.to.challenge['startDate']);
+
+                        int elapsedDuration = currentDate
+                            .difference(startDate)
+                            .inMinutes;
+
+                        return Text(
+                          '${(elapsedDuration * 0.05).ceil()} Dollars',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        );
+                      }),
                     ],
                   ),
                 ),
@@ -210,16 +250,29 @@ class ResultPage extends GetView<ResultController> {
                         ),
                       ),
                       const Gap(40),
-                      const Text(
-                        '2 years',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
+                      Obx(() {
+                        if (HomeController.to.challenge.isEmpty) {
+                          return const SizedBox();
+                        }
+
+                        DateTime currentDate = DateTime.now();
+                        DateTime startDate = DateTime.parse(HomeController.to.challenge['startDate']);
+
+                        int elapsedDuration = currentDate
+                            .difference(startDate)
+                            .inMinutes;
+
+                        return Text(
+                          '${(elapsedDuration * 0.05).ceil() / 100} years',
+                          textAlign: TextAlign.right,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        );
+                      }),
                     ],
                   ),
                 ),
@@ -252,16 +305,29 @@ class ResultPage extends GetView<ResultController> {
                         ),
                       ),
                       const Gap(40),
-                      const Text(
-                        '15% down',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
+                      Obx(() {
+                        if (HomeController.to.challenge.isEmpty) {
+                          return const SizedBox();
+                        }
+
+                        DateTime currentDate = DateTime.now();
+                        DateTime startDate = DateTime.parse(HomeController.to.challenge['startDate']);
+
+                        int elapsedDuration = currentDate
+                            .difference(startDate)
+                            .inMinutes;
+
+                        return Text(
+                          '${(elapsedDuration * 0.04).ceil() / 100}% down',
+                          textAlign: TextAlign.right,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        );
+                      }),
                     ],
                   ),
                 ),

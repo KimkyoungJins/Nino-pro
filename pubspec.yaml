@@ -15,6 +15,13 @@ dependencies:
   gap: ^3.0.1
   get: ^4.6.6
   share_plus: ^10.1.2
+  firebase_core: ^3.8.0
+  cloud_firestore: ^5.5.0
+  intl: ^0.19.0
+  toastification: ^2.3.0
+  google_sign_in: ^6.2.2
+  logger: ^2.5.0
+  firebase_auth: ^5.3.3
 
 dev_dependencies:
   flutter_test:

@@ -3,12 +3,7 @@ import 'package:get/get.dart';
 import 'package:no_smoking/controller/firebase_controller.dart';
 import 'package:toastification/toastification.dart';
 
-class JoinController extends GetxController {
-  final nameController = TextEditingController();
-  final idController = TextEditingController();
-  final pwController = TextEditingController();
-  final rePwController = TextEditingController();
-
+class GoogleJoinController extends GetxController {
   Map<dynamic, dynamic> age = {
     0: 'Select your smoking history',
     1: 'Less than a year',
@@ -29,48 +24,24 @@ class JoinController extends GetxController {
   var selectedAge = 0.obs;
   var selectedCount = 0.obs;
 
+  Map<String, dynamic> data = Get.arguments['data'];
+
   @override
   void onInit() {
     super.onInit();
   }
 
   void onJoin() async {
-    if (nameController.text.trim().isEmpty) {
-      toast('Please enter your name.');
-      return;
-    }
-    if (idController.text.trim().isEmpty) {
-      toast('Please enter your id.');
-      return;
-    }
-    if (pwController.text.trim().isEmpty) {
-      toast('Please enter your password.');
-      return;
-    }
-    if (rePwController.text.trim().isEmpty) {
-      toast('Please enter your confirm password.');
-      return;
-    }
-    if (pwController.text != rePwController.text) {
-      toast('The password does not match.');
-      return;
-    }
     if (selectedAge.value == 0) {
       toast('Please select a smoking record.');
       return;
     }
-    // if (selectedCount.value == 0) {
+    // if (selectedCount.value == -1) {
     //   toast('Please select the number of times you smoke.');
     //   return;
     // }
 
-    final data = {
-      'name': nameController.text,
-      'id': idController.text,
-      'pw': pwController.text,
-      'smoking_age': selectedAge.value,
-      'smoking_count': selectedCount.value,
-    };
+    data..['smoking_age'] = selectedAge.value..['smoking_count'] = selectedCount.value;
 
     final res = await FirebaseController.to.onJoin(data);
 

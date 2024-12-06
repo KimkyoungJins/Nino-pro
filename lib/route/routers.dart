@@ -5,6 +5,7 @@ class Routers {
   static const home = "/home";
   static const challenge = "/challenge";
   static const join = "/join";
+  static const googleJoin = "/google/join";
   static const result = "/result";
   static const progress = "/progress";
 }

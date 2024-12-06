@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:no_smoking/controller/challenge_controller.dart';
 import 'package:no_smoking/controller/result_controller.dart';
 import 'package:no_smoking/popup/base_dialog.dart';
@@ -11,9 +12,20 @@ void toChallengePage() => Get.toNamed(Routers.challenge, id: 1);
 class ChallengePage extends GetView<ChallengeController> {
   const ChallengePage({super.key});
 
-  Widget _item(String title) {
+
+  Widget _item(String title, DateTime startDate, DateTime endDate) {
     return InkWell(
-      onTap: () => showBaseDialog(title: ''),
+      onTap: () {
+        String startFormattedDate = DateFormat('yyyy/MM/dd').format(startDate);
+        String endFormattedDate = DateFormat('yyyy/MM/dd').format(endDate);
+
+        showBaseDialog(
+          title: title,
+          ymd: '$startFormattedDate ~ $endFormattedDate',
+          startDate: startDate,
+          endDate: endDate,
+        );
+      },
       child: Container(
         height: 80,
         padding: EdgeInsets.symmetric(horizontal: 16),
@@ -224,26 +236,50 @@ class ChallengePage extends GetView<ChallengeController> {
                   Gap(8),
                   _item(
                     '1-Day No Smoking Challenge',
+                    DateTime.now(),
+                    DateTime.now().add(const Duration(days: 1)),
                   ),
                   Gap(11),
                   _item(
                     '1-Week No Smoking Challenge',
+                    DateTime.now(),
+                    DateTime.now().add(const Duration(days: 7)),
                   ),
                   Gap(11),
                   _item(
                     '2-Week No Smoking Challenge',
+                    DateTime.now(),
+                    DateTime.now().add(const Duration(days: 14)),
                   ),
                   Gap(11),
                   _item(
                     '1-Month No Smoking Challenge',
+                    DateTime.now(),
+                    DateTime(
+                      DateTime.now().year,
+                      DateTime.now().month + 1,
+                      DateTime.now().day,
+                    ),
                   ),
                   Gap(11),
                   _item(
                     '6-Month No Smoking Challenge',
+                    DateTime.now(),
+                    DateTime(
+                      DateTime.now().year,
+                      DateTime.now().month + 6,
+                      DateTime.now().day,
+                    ),
                   ),
                   Gap(11),
                   _item(
                     '1-Year No Smoking Challenge',
+                    DateTime.now(),
+                    DateTime(
+                      DateTime.now().year + 1,
+                      DateTime.now().month,
+                      DateTime.now().day,
+                    ),
                   ),
                   Gap(11),
                 ],
