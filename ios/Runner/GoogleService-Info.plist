@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>488367771004-7sid95j68496rf1hmfttfhbk5o6h6d8e.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.488367771004-7sid95j68496rf1hmfttfhbk5o6h6d8e</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDDC3_bG44xxBVqm0JbQroYXcnZiSUhjmw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>488367771004</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.app.smoking.noSmoking</string>
+	<key>PROJECT_ID</key>
+	<string>nico-pro</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nico-pro.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:488367771004:ios:31e8251a33e9335e68e8f9</string>
+</dict>
+</plist>

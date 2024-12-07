@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "488367771004",
+    "project_id": "nico-pro",
+    "storage_bucket": "nico-pro.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488367771004:android:eb3b659d354c8dde68e8f9",
+        "android_client_info": {
+          "package_name": "com.app.smoking.no_smoking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488367771004-ielm47ckhmunseu8vfkjrscot9nl539b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5PB8Uoj80HsDcCROAHlgpyNlcN9R79yQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488367771004-ielm47ckhmunseu8vfkjrscot9nl539b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
